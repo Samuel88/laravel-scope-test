@@ -8,10 +8,11 @@
         <meta description="List all shops">
     </x-slot:head>
 
+    <livewire:geolocation-live/>
+
     @foreach ($shops as $shop)
         <x-shops.item :item="$shop"/>
     @endforeach
 
     {{ $shops->links() }}
-    
 </x-layouts.app>
