@@ -9,10 +9,5 @@
     </x-slot:head>
 
     <livewire:geolocation-live/>
-
-    @foreach ($shops as $shop)
-        <x-shops.item :item="$shop"/>
-    @endforeach
-
-    {{ $shops->links() }}
+    <livewire:shops.list-shops/>
 </x-layouts.app>
