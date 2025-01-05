@@ -12,7 +12,11 @@ class ShopController extends Controller
      */
     public function index()
     {
-        //
+        $shops = Shop::select('*')
+            ->withDistanceTo(0.0, 0.0)
+            ->orderBy('distance', 'desc')
+            ->get();
+        return view('shops.index', compact('shops'));
     }
 
     /**
