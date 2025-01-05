@@ -11,5 +11,7 @@
     @foreach ($shops as $shop)
         <x-shops.item :item="$shop"/>
     @endforeach
+
+    {{ $shops->links() }}
     
 </x-layouts.app>

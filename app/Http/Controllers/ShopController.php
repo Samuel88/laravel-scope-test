@@ -15,7 +15,7 @@ class ShopController extends Controller
         $shops = Shop::select('*')
             ->withDistanceTo(0.0, 0.0)
             ->orderBy('distance', 'desc')
-            ->get();
+            ->paginate(perPage: 5);
         return view('shops.index', compact('shops'));
     }
 
