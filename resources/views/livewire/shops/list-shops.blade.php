@@ -5,4 +5,5 @@
     @foreach ($shops as $shop)
         <x-shops.item wire:key="{{ $shop->id }}" :item="$shop"/>
     @endforeach
+    {{ $shops->links() }}
 </div>

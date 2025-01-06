@@ -7,6 +7,7 @@
 - https://laravel-news.com/query-scopes
 - https://laravel.com/docs/11.x/eloquent#query-scopes
 - https://stackoverflow.com/questions/20864872/how-to-bind-parameters-to-a-raw-db-query-in-laravel-thats-used-on-a-model
+- https://www.raymondcamden.com/2019/09/01/using-geolocation-with-vuejs
 
 ## Codice utile
 ```sql
