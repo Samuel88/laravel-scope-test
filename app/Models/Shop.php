@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Shop extends Model
 {
@@ -21,5 +22,9 @@ class Shop extends Model
                 'longitude' => $longitude,
             ]
         );
+    }
+
+    public function products(): BelongsToMany {
+        return $this->belongsToMany(Product::class);
     }
 }
