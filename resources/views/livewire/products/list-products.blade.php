@@ -6,4 +6,5 @@
             <h4>{{ $product->shop_name }}</h4>
         </div>
     @endforeach
+    {{ $products->links() }}
 </div>
