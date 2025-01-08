@@ -31,6 +31,8 @@ class ShopSeeder extends Seeder
     public function run(): void {
         foreach(
             $this->readCSV(__DIR__ . '/../../negozi_casuali.csv') as $row) {
+                $row['latitude'] = fake()->latitude();
+                $row['longitude'] = fake()->longitude();
                 Shop::create($row);
             }
     }

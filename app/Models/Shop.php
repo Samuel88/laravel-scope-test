@@ -16,15 +16,13 @@ class Shop extends Model
 
     public function scopeWithDistanceTo(Builder $query, float $latitude, float $longitude) {
         $query->selectRaw(
-            'ST_Distance_Sphere(point(latitude, longitude), point(:latitude, :longitude)) as distance',
-            [
-                'latitude' => $latitude,
-                'longitude' => $longitude,
-            ]
+            'ST_Distance_Sphere(point(latitude, longitude), point(?, ?)) as distance',
+            [$latitude, $longitude]
         );
     }
 
     public function products(): BelongsToMany {
-        return $this->belongsToMany(Product::class);
+        return $this->belongsToMany(Product::class)
+            ->withPivot('qty');
     }
 }

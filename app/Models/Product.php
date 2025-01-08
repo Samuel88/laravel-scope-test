@@ -13,6 +13,7 @@ class Product extends Model
     protected $fillable = ['name', 'description', 'price'];
 
     public function shops(): BelongsToMany {
-        return $this->belongsToMany(Shop::class);
+        return $this->belongsToMany(Shop::class)
+            ->withPivot('qty');
     }
 }

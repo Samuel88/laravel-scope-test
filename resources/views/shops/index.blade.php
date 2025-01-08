@@ -9,5 +9,6 @@
     </x-slot:head>
 
     <livewire:geolocation-live/>
-    <livewire:shops.list-shops/>
+    {{--<livewire:shops.list-shops/>--}}
+    <livewire:products.list-products/>
 </x-layouts.app>
