@@ -20,7 +20,7 @@ class Product extends Model
             ->withPivot('qty');
     }
 
-    public function scopeWithNearestShopTo(Builder $query, float $latitude, float $longitude): void {
+    public function scopeWithNearestShopFrom(Builder $query, float $latitude, float $longitude): void {
         $query->joinSub(
             DB::query()
                 ->fromSub(
