@@ -25,6 +25,7 @@ WITH product_shop_nearest AS (
     FROM (
         SELECT
             `product_shop`.`product_id`,
+            `product_shop`.`qty` AS `shop_qty`,
             `shops`.`id` AS `shop_id`,
             `shops`.`name` AS `shop_name`,
             `shops`.`address` AS `shop_address`,

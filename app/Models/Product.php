@@ -27,6 +27,7 @@ class Product extends Model
                     DB::table("product_shop")
                         ->select([
                             'product_shop.product_id AS product_id',
+                            'product_shop.qty AS shop_qty',
                             'shops.id AS shop_id',
                             'shops.name AS shop_name',
                             'shops.address AS shop_address',
