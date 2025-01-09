@@ -21,17 +21,17 @@ SELECT ST_Distance_Sphere(point(latitude, longitude), point(0,0)) FROM `shops` W
 
 WITH product_shop_nearest AS (
     SELECT
-		`t`.*
+        `t`.*
     FROM (
         SELECT
-        	`product_shop`.`product_id`,
-            `shops`.`id` AS `shop_id`,	
-			`shops`.`name` AS `shop_name`,
-			`shops`.`address` AS `shop_address`,
-			`shops`.`city` AS `shop_city`,
-			`shops`.`phone` AS `shop_phone`,
-			`shops`.`latitude` AS `shop_latitude`,
-			`shops`.`longitude` AS `shop_longitude`,
+            `product_shop`.`product_id`,
+            `shops`.`id` AS `shop_id`,
+            `shops`.`name` AS `shop_name`,
+            `shops`.`address` AS `shop_address`,
+            `shops`.`city` AS `shop_city`,
+            `shops`.`phone` AS `shop_phone`,
+            `shops`.`latitude` AS `shop_latitude`,
+            `shops`.`longitude` AS `shop_longitude`,
             ROW_NUMBER() OVER(
                 PARTITION BY `product_shop`.`product_id`
                 ORDER BY ST_Distance_Sphere(
@@ -46,17 +46,17 @@ WITH product_shop_nearest AS (
     WHERE
         `t`.`counter` = 1
 )
-SELECT 
-	*
+SELECT
+    *
 FROM `products`
-	JOIN `product_shop_nearest`
-    	ON `products`.`id` = `product_shop_nearest`.`product_id`;
+    JOIN `product_shop_nearest`
+        ON `products`.`id` = `product_shop_nearest`.`product_id`;
 ```
 
 ```sql
 SELECT *
 FROM `products`
-	JOIN (
+    JOIN (
         SELECT p.id as product_id, (
             SELECT `shops`.`id`
             FROM `shops`
@@ -70,7 +70,7 @@ FROM `products`
         ) as shop_id
         FROM `products` p
     ) as `pivot`
-    	ON `products`.`id` = `pivot`.`product_id`
+        ON `products`.`id` = `pivot`.`product_id`
     JOIN `shops`
-    	ON `shops`.`id` = `pivot`.`shop_id`;
+        ON `shops`.`id` = `pivot`.`shop_id`;
 ```
