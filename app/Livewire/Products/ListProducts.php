@@ -4,17 +4,28 @@ namespace App\Livewire\Products;
 
 use App\Models\Product;
 use Livewire\Component;
+use Livewire\Attributes\On;
+use Livewire\WithPagination;
+use Livewire\WithoutUrlPagination;
 
 class ListProducts extends Component
 {
+    use WithPagination, WithoutUrlPagination;
+
+    public float $latitude = 0.0;
+    public float $longitude = 0.0;
+
+    #[On("geolocation-update")]
+    public function updateLocation($coords = null, $timestamp = null) {
+        $this->latitude = $coords['latitude'];
+        $this->longitude = $coords['longitude'];
+    }
+
     public function render()
     {
 
-        $latitude = 43.6636831;
-        $longitude = 10.6282204;
-
         $products = Product::select('*')
-            ->withNearestShopTo($latitude, $longitude)
+            ->withNearestShopTo($this->latitude, $this->longitude)
             ->paginate(4);
 
         return view('livewire.products.list-products', compact('products'));

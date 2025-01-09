@@ -1,5 +1,6 @@
 <div>
     {{-- $products --}}
+    {{ $latitude }} / {{ $longitude }}
     @foreach ($products as $product)
         <div>
             <h3>{{ $product->name }}</h3>
