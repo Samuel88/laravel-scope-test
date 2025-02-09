@@ -9,6 +9,12 @@
 - https://stackoverflow.com/questions/20864872/how-to-bind-parameters-to-a-raw-db-query-in-laravel-thats-used-on-a-model
 - https://www.raymondcamden.com/2019/09/01/using-geolocation-with-vuejs
 
+## Per fare il debugging delle query
+https://laravel-news.com/laravel-n1-query-problems
+```bash
+composer require barryvdh/laravel-debugbar --dev
+```
+
 ## Codice utile
 ```sql
 SELECT ST_Distance_Sphere(point(latitude, longitude), point(0,0)) FROM `shops` WHERE 1;
