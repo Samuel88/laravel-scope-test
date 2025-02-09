@@ -17,6 +17,7 @@ class Product extends Model
 
     public function shops(): BelongsToMany {
         return $this->belongsToMany(Shop::class)
+            ->using(ProductShop::class)
             ->withPivot('qty');
     }
 

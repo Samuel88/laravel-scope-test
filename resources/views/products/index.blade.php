@@ -1,6 +1,4 @@
-<div>
-    {{-- $products --}}
-    {{ $latitude }} / {{ $longitude }}
+<x-layouts.app>
     @foreach ($products as $product)
         <div>
             <h3>{{ $product->name }}</h3>
@@ -10,4 +8,4 @@
         </div>
     @endforeach
     {{ $products->links() }}
-</div>
+</x-layouts.app>

@@ -23,9 +23,7 @@ class ListProducts extends Component
 
     public function render()
     {
-
-        $products = Product::select('*')
-            ->withNearestShopFrom($this->latitude, $this->longitude)
+        $products = Product::withNearestShopFrom($this->latitude, $this->longitude)
             ->paginate(4);
 
         return view('livewire.products.list-products', compact('products'));

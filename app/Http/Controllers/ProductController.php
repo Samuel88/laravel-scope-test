@@ -12,7 +12,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $products = Product::withNearestShopFrom(0, 0)
+            ->paginate(4);
+        return view('products.index', compact('products'));
     }
 
     /**
@@ -34,9 +36,11 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Product $product)
+    public function show(int $id)
     {
-        //
+        $product = Product::withNearestShopFrom(0, 0)
+            ->find($id);
+        return view('products.show', compact('product'));
     }
 
     /**
