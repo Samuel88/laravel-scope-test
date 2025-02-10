@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\ProductShop;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -39,8 +40,9 @@ class ProductController extends Controller
     public function show(int $id)
     {
         $product = Product::withNearestShopFrom(0, 0)
-            ->find($id);
-        return view('products.show', compact('product'));
+            ->findOrFail($id);
+        $colors = ProductShop::find($product->product_shop_id)->colors()->get();
+        return view('products.show', compact('product', 'colors'));
     }
 
     /**

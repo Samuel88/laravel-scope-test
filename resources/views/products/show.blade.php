@@ -5,5 +5,8 @@
     </x-slot:title>
 
     @dump($product)
-
+    
+    @foreach ($colors as $color)
+        @dump($color)
+    @endforeach
 </x-layouts.app>
